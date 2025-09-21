@@ -19,7 +19,6 @@ class DiabetesData(BaseModel):
 
 class DiabetesResponse(BaseModel):
     prediction: float
-
 @app.get("/", status_code=status.HTTP_200_OK)
 async def health_ping():
     return {"status": "healthy"}
