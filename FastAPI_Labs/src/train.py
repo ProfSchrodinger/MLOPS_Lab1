@@ -1,5 +1,6 @@
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import StandardScaler
 import joblib
 from data import load_data, split_data
 
@@ -15,9 +16,14 @@ from data import load_data, split_data
 #     joblib.dump(dt_classifier, "../model/iris_model.pkl")
 
 def fit_model(X_train, y_train):
+    scaler = StandardScaler()
+    X_train_scaled = scaler.fit_transform(X_train)
+    
     model = LinearRegression()
-    model.fit(X_train, y_train)
+    model.fit(X_train_scaled, y_train)
+   
     joblib.dump(model, "../model/diabetes_model.pkl")
+    joblib.dump(scaler, "../model/diabetes_scaler.pkl")
 
 if __name__ == "__main__":
     X, y = load_data()
