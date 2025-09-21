@@ -1,7 +1,9 @@
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, mean_absolute_error
 from sklearn.preprocessing import StandardScaler
 import joblib
+import numpy as np
 from data import load_data, split_data
 
 # def fit_model(X_train, y_train):
@@ -21,6 +23,17 @@ def fit_model(X_train, y_train):
     
     model = LinearRegression()
     model.fit(X_train, y_train)
+    
+    y_pred = model.predict(X_test)
+
+    # Evaluation metrics
+    rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+    mae = mean_absolute_error(y_test, y_pred)
+
+    print(f"Model Evaluation:")
+    print(f"  RMSE: {rmse:.4f}")
+    print(f"  MAE : {mae:.4f}")
+
    
     joblib.dump(model, "../model/diabetes_model.pkl")
 
