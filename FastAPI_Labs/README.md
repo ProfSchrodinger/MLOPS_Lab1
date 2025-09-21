@@ -1,3 +1,4 @@
+Changes made as a part fo this assignment are mentioned at the end of this README file.
 
 ---
 - Video Explanation: [FastAPI lab](https://www.youtube.com/watch?v=KReburHqRIQ&list=PLcS4TrUUc53LeKBIyXAaERFKBJ3dvc9GZ&index=4)
@@ -148,3 +149,11 @@ FastAPI will catch this exception and return a response with a 404 status code a
 }
 ```
 - For more information on how to handle errors in FASTAPI refer to this [documentation](https://fastapi.tiangolo.com/tutorial/handling-errors/).
+
+
+## Changes Made in This Assignment
+
+1. Replaced the Iris dataset with the Diabetes dataset.
+2. Switched the model from a Decision Tree Classifier to a Linear Regression model.
+3. Modified the supporting files (train.py, predict.py, data.py). Instead of changing main.py, created a new app.py file, since the changes were more substantial there.
+4. The Diabetes dataset from scikit-learn is already normalized. Because the raw dataset was not available in scikit-learn, we could not train a scaler on original values. As a result, the API endpoint expects scaled input features rather than raw, real-world units.
